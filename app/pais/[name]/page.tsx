@@ -19,7 +19,24 @@ export default async function CountryPage({params: {name}}: {params: {name: stri
       Voltar
       </Link>
       <article className="flex justify-between min-w-full p-10 bg-white rounded-xl">
-        <Image src={country.flags.svg} alt={country.flags.alt}/>
+        <section>
+        <h2 className="text-xl text-gray-800">
+          <b>🏙️ Capital:</b> {country.capital}
+        </h2>
+        <h2 className="text-xl text-gray-800">
+          <b>🗺️ Continente: Europe</b> {country.region} - {country.subregion}
+        </h2>
+        <h2 className="text-xl text-gray-800">
+          <b>👨‍👩‍👧‍👦 População:</b> {country.population}
+        </h2>
+        <h2 className="text-xl text-gray-800">
+          <b>🗣️Línguas faladas:</b>
+          <br /> 
+          {Object.values(country.languages).map((language) => (<span key={language} className="inline-block px-2 bg-indigo-700 mr-2 text-white text-sm rounded-full">{language}</span>))}
+        </h2>
+
+        </section>
+        {/* <Image src={country.flags.svg} alt={country.flags.alt}/> */}
       </article>
     </section>
 )
