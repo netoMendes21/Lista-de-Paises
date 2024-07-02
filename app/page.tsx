@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-type Country = {
+export type Country = {
   name: {
     common: string
   }
