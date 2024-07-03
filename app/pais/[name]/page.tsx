@@ -45,8 +45,8 @@ export default async function CountryPage({params: {name}}: {params: {name: stri
       <Image src="/arrow-back.svg" alt="seta de voltar" width={24} height={24}/>
       Voltar
       </Link>
-      <article className="flex justify-between min-w-full p-10 bg-white rounded-xl">
-        <section>
+      <article className="flex md:flex-row flex-col justify-between min-w-full p-10 bg-white rounded-xl">
+        <section className="flex flex-col gap-5">
         {country.capital && (<h2 className="text-xl text-gray-800">
           <b>🏙️ Capital:</b> {country.capital}
         </h2>)}
@@ -63,7 +63,7 @@ export default async function CountryPage({params: {name}}: {params: {name: stri
         </h2> )}
 
         </section>
-        <div className="relative h-auto w-96 shadow-md">
+        <div className="relative h-48 my-2 mr-10 md:h-48 w-96 shadow-md md:order-last order-first">
         <Image 
           src={country.flags.svg}
           alt={country.flags.alt}
@@ -74,9 +74,9 @@ export default async function CountryPage({params: {name}}: {params: {name: stri
       </article>
       <section>
         <h3 className="mt-12 text-2xl font-semibold text-gray-800">Países que fazem fronteira</h3>
-        <div className="grid grid-cols-5 gap-3 my-3 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full container gap-2">
           {borderCountries?.map((border) =>
-            <CountryCard key={name}{...border} />
+            <CountryCard key={border.name}{...border} />
         )}
         </div>
       </section>
