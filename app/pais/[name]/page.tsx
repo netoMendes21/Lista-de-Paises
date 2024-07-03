@@ -1,17 +1,42 @@
 import type { Country } from "@/app/page" 
+import CountryCard from "@/components/country-card";
 import Image from "next/image"
 import Link from "next/link"
 
+
 async function getCountryByName(name: string): Promise<Country> {
-  const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
-  return (await response.json())[0] 
+  const response = await fetch("https://restcountries.com/v3.1/all");
+  const countries: Country[] = await response.json();
+  return countries.find((country: Country) => country.name.common === name)!;
+}
+
+async function getCountryBordersByName(name:string) {
+  const responseBorder = await fetch("https://restcountries.com/v3.1/all");
+  const countries: Country[] = await responseBorder.json();
+
+  const country = countries.find((country: Country) => country.name.common === name)!;
+
+  return country.borders?.map((border) => {
+    const borderCountry = countries.find((country) => country.cca3 === border)!   
+    return {
+      name: borderCountry?.name.common,
+      ptName: borderCountry?.translations.por.common,
+      flag: borderCountry?.flags.svg,
+      flagAlt: borderCountry?.flags.alt,
+    }
+  })
 }
 
 export default async function CountryPage({params: {name}}: {params: {name: string}}) {
 
   const formatter = Intl.NumberFormat("en", {notation: "compact"});
 
-  const country = await getCountryByName(name)
+  const country = await getCountryByName(decodeURI(name))
+
+  const borderCountries = await getCountryBordersByName(decodeURI(name));
+
+  console.log(borderCountries);
+
   return (
     <section className="flex flex-col container">
 
@@ -47,6 +72,14 @@ export default async function CountryPage({params: {name}}: {params: {name: stri
         />
         </div>
       </article>
+      <section>
+        <h3 className="mt-12 text-2xl font-semibold text-gray-800">Países que fazem fronteira</h3>
+        <div className="grid grid-cols-5 gap-3 my-3 w-full">
+          {borderCountries?.map((border) =>
+            <CountryCard key={name}{...border} />
+        )}
+        </div>
+      </section>
     </section>
 )
 }
