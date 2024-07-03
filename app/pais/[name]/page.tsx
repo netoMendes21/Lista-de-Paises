@@ -57,9 +57,8 @@ export default async function CountryPage({params: {name}}: {params: {name: stri
           <b>👨‍👩‍👧‍👦 População:</b> {formatter.format(country.population)}
         </h2>
         {country.languages && (<h2 className="text-xl text-gray-800">
-          <b>🗣️Línguas faladas:</b>
-          <br /> 
-          {Object.values(country.languages).map((language) => (<span key={language} className="inline-block px-2 bg-indigo-700 mr-2 text-white text-sm rounded-full">{language}</span>))}
+          <b className="flex flex-wrap">🗣️Línguas faladas:</b>
+          {Object.values(country.languages).map((language) => (<span key={language} className="inline-block mt-4 px-2 bg-indigo-700 mr-2 text-white text-sm rounded-full">{language}</span>))}
         </h2> )}
 
         </section>
