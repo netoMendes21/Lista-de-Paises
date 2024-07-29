@@ -10,7 +10,7 @@ O poder do Next.js criando uma lista de países utilizando a API [REST Countries
 
 ![image](https://github.com/codante-io/mp-lista-de-paises-next/assets/6475893/5f35397c-f71e-4319-90b1-2ba970600a88)
 
-🔗deploy do projeto: <a target="_blank"> https://mp-lista-de-paises-next-nine.vercel.app/ </a>
+🔗deploy do projeto: <a href="https://mp-lista-de-paises-next-nine.vercel.app/" target="_blank">clique aqui</a>
 
 ## 👉🏽 Sobre esse mini-projeto
 ### Tecnologias Usadas
