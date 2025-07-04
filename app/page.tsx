@@ -29,6 +29,28 @@ export type Country = {
 }
 
 async function getCountries(): Promise<Country[]> {
+  try {
+    const response = await fetch("https://restcountries.com/v3.1/all");
+
+    if (!response.ok) {
+      console.error("Erro ao buscar países:", response.statusText);
+      return [];
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      console.error("Resposta da API não é um array:", data);
+      return [];
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Erro inesperado ao buscar países:", error);
+    return [];
+  }
+}
+async function getCountries(): Promise<Country[]> {
   const response = await fetch("https://restcountries.com/v3.1/all");
   return response.json();
 }
