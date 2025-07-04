@@ -71,7 +71,7 @@ async function getCountryBordersByName(
         flagAlt: borderCountry.flags.alt,
       };
     })
-    .filter((b): b is BorderCountry => b !== null);
+    .filter((b: any): b is BorderCountry => b !== null);
 }
 
 export default async function CountryPage({
