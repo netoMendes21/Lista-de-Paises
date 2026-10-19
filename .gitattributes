@@ -1,0 +1,14 @@
+# Texto padronizado em LF em todos os sistemas
+* text=auto eol=lf
+
+# Scripts de comando do Windows
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Imagens são arquivos binários
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary

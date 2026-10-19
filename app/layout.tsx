@@ -1,33 +1,58 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
-import "./globals.css";
+import Link from "next/link";
 import Image from "next/image";
+import ThemeToggle from "@/components/theme-toggle";
+import GlobeIcon from "@/components/globe-icon";
+import "./globals.css";
 
 const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
+const themeScript = `(function(){var t;try{t=localStorage.getItem('countries-theme')}catch(e){}document.documentElement.dataset.theme=t==='light'||t==='dark'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'})()`;
 
 export const metadata: Metadata = {
   title: "Lista de países",
-  description: "Uma lista de países criada com o Next 13",
+  description: "Um mundo de descobertas. Explore países, capitais, idiomas e fronteiras.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className={nunitoSans.className}>
-        <main className="bg-gray-100 min-h-screen flex flex-col items-center">
-          <nav className="w-full bg-white h-16 flex items-center justify-center">
-            <section className="container flex items-center gap-3">
-              <Image 
-              width={48} height={48} src="logo.svg" alt="Planeta"/>
-              <h1 className="font-bold text-2xl">Lista de países</h1>
-            </section>
-          </nav>
-        {children}
+        <a className="skip-link" href="#conteudo">
+          Pular para o conteúdo
+        </a>
+        <header className="site-header">
+          <div className="shell header-inner">
+            <Link href="/" className="brand" aria-label="Lista de países — início">
+              <span className="brand-mark" aria-hidden="true">
+                <Image
+                  src="/brand-globe.svg"
+                  alt=""
+                  width={43}
+                  height={43}
+                  className="brand-globe"
+                />
+              </span>
+              <span>
+                Lista de países
+                <span className="brand-caption">UM MUNDO PARA EXPLORAR</span>
+              </span>
+            </Link>
+            <ThemeToggle />
+          </div>
+        </header>
+        <main id="conteudo" className="shell main-content">
+          {children}
         </main>
+        <footer className="shell site-footer">
+          <span>O mundo começa com uma descoberta.</span>
+          <span>
+            Feito para quem tem curiosidade <GlobeIcon className="footer-globe" />
+          </span>
+        </footer>
       </body>
     </html>
   );

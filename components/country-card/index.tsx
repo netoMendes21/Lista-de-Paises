@@ -1,15 +1,38 @@
 import Image from "next/image";
 import Link from "next/link";
+import GlobeIcon from "@/components/globe-icon";
+import RegionBadge from "@/components/region-badge";
+import type { Country } from "@/lib/countries";
 
-export default function CountryCard({name, ptName, flag, flagAlt}: {name: string, ptName: string, flag: string, flagAlt: string}) {
+type CountryCardProps = Pick<Country, "name" | "ptName" | "flag" | "flagAlt"> & { region?: string };
+
+export default function CountryCard({ name, ptName, flag, flagAlt, region }: CountryCardProps) {
   return (
-  <Link href={`/pais/${name}`} key={name}>
-  <article className="h-64 min-w-full p-2 bg-white border-2 rounded-xl hover:border-indigo-200 transition-all hover:shadow-xl" key={name}>
-    <div className="relative w-full h-40 p-2 overflow-hidden rounded-xl">
-    <Image src={flag} alt={flagAlt} fill className="object-cover"/>
-    </div>
-    <h1 className="font-bold text-xl text-center mt-5">{ptName}</h1>
-    </article>
-  </Link>
-  )
+    <Link
+      href={"/pais/" + encodeURIComponent(name)}
+      className="country-card"
+      aria-label={`Conhecer ${ptName}`}
+    >
+      <article>
+        <div className="flag-frame">
+          <Image
+            src={flag}
+            alt={flagAlt}
+            fill
+            sizes="(max-width: 479px) 130px, 180px"
+            className="flag-image"
+          />
+        </div>
+        <div className="card-info">
+          <h2>{ptName}</h2>
+          <div className="card-footer">
+            {region ? <RegionBadge region={region} /> : <span />}
+            <span className="card-access" title="Ver detalhes" aria-hidden="true">
+              <GlobeIcon />
+            </span>
+          </div>
+        </div>
+      </article>
+    </Link>
+  );
 }
