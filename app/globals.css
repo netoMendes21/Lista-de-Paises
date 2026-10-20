@@ -232,7 +232,7 @@ html[data-theme="dark"] .theme-dark {
   color: var(--accent);
 }
 
-.hero-copy>p {
+.hero-copy > p {
   color: var(--muted);
   font-size: 14px;
   line-height: 1.9;
@@ -353,6 +353,15 @@ html[data-theme="dark"] .theme-dark {
   font-size: 12px;
 }
 
+.region-filter select:focus {
+  outline: none;
+}
+
+.region-filter:has(select:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .suggestions {
   position: absolute;
   z-index: 20;
@@ -385,7 +394,7 @@ html[data-theme="dark"] .theme-dark {
   object-fit: contain;
 }
 
-.suggestion>span:last-child {
+.suggestion > span:last-child {
   margin-left: auto;
   color: var(--accent);
 }
@@ -568,7 +577,7 @@ html[data-theme="dark"] .theme-dark {
   border-radius: 12px;
 }
 
-.empty-state>span {
+.empty-state > span {
   font-size: 40px;
   color: var(--accent);
 }
@@ -818,11 +827,13 @@ html[data-theme="dark"] .theme-dark {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(circle at 30% 25%,
-      #ffffff12,
-      transparent 48%,
-      #11172a30 83%,
-      #11172a60);
+  background: radial-gradient(
+    circle at 30% 25%,
+    #ffffff12,
+    transparent 48%,
+    #11172a30 83%,
+    #11172a60
+  );
   box-shadow: inset -9px -6px 18px #0b122640;
   pointer-events: none;
 }
@@ -1016,7 +1027,7 @@ html[data-theme="dark"] .theme-dark {
     letter-spacing: -1.2px;
   }
 
-  .hero-copy>p {
+  .hero-copy > p {
     font-size: 13px;
   }
 
@@ -1113,7 +1124,6 @@ html[data-theme="dark"] .theme-dark {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
