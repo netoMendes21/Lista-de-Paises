@@ -288,6 +288,14 @@ html[data-theme="dark"] .theme-dark {
   box-shadow: var(--shadow);
 }
 
+.search input:focus {
+  outline: none;
+}
+
+.search input:focus-visible {
+  border-color: var(--accent);
+}
+
 .search input::placeholder {
   color: var(--muted);
   opacity: 1;
@@ -358,8 +366,7 @@ html[data-theme="dark"] .theme-dark {
 }
 
 .region-filter:has(select:focus-visible) {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
+  border-color: var(--accent);
 }
 
 .suggestions {
