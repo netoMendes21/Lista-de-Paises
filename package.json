@@ -11,7 +11,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "verify:data": "node scripts/verify-attractions.mjs && node scripts/verify-country-themes.mjs",
-    "test": "node --test scripts/verify-navigation.mjs"
+    "test": "node --test scripts/verify-navigation.mjs",
+    "test:routes": "node --test scripts/verify-country-routes.mjs"
   },
   "dependencies": {
     "next": "16.4.2",

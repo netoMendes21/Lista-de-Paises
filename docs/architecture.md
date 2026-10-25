@@ -5,7 +5,7 @@ O projeto usa o App Router do Next.js com TypeScript estrito. As páginas e o la
 ## Organização
 
 - `app/`: rotas, metadados, estados de carregamento e erro e composição das telas.
-- `app/pais/_lib/page-data.ts`: resolução dos dados das rotas, cache por renderização e respostas de destino não encontrado. Os parâmetros do App Router já chegam decodificados.
+- `app/pais/_lib/page-data.ts`: resolução dos dados das rotas, cache por renderização e respostas de destino não encontrado. Os parâmetros de URL são decodificados antes da consulta; sequências inválidas recebem resposta 404.
 - `components/`: unidades visuais reutilizáveis, com propriedades tipadas. Links de retorno, cards, fotos, créditos e mapa têm responsabilidades separadas.
 - `lib/`: acesso e validação dos dados, funções de domínio, caminhos de navegação e normalização da pesquisa.
 - `lib/data/`: catálogo e dados locais verificados. Não contém lógica de interface.
@@ -35,3 +35,5 @@ npm run build
 Executar `npm run format` para formatar os arquivos versionáveis com Prettier, usando dois espaços e finais de linha LF. Dependências, caches e saídas de compilação são ignorados. O gerador de paletas também formata o CSS que produz.
 
 A validação visual deve cobrir início, país e atração, temas claro e escuro, busca por teclado, filtros, paginação da galeria e retorno ao topo. Testar larguras de 320, 375, 560, 768, 1024, 1440 e 1920 px e orientação horizontal. Esses testes representam faixas de tela; não substituem a execução em todos os navegadores e dispositivos físicos.
+
+Para verificar as rotas completas, mantenha a prévia em execução na porta 3001 e rode `npm run test:routes`. Esse teste cobre os Estados Unidos, a Nova Caledônia e uma atração com nome de país codificado. Use `APP_URL` para apontar para outra prévia.
