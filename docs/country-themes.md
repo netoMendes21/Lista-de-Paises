@@ -7,3 +7,5 @@ Os 250 destinos atuais possuem paletas extraídas das bandeiras usadas pela API.
 A paleta aprovada da Espanha é preservada como exceção editorial. Para os demais países, os fundos recebem as cores predominantes e os textos/botões são ajustados para contraste mínimo de 4,5:1. Cores neutras da bandeira podem aparecer nos detalhes; fundos e textos recebem variações apropriadas para cada modo.
 
 Para atualizar: node scripts/generate-country-themes.mjs. Para validar as paletas: node scripts/verify-country-themes.mjs. O gerador usa acesso à rede somente durante a atualização.
+
+Nos Estados Unidos, o azul da bandeira conduz a paleta e o vermelho aparece nas bordas superiores dos cards, no painel do país e nos traços dos títulos de seção. As duas cores são preservadas nos temas claro e escuro.

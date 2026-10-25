@@ -64,3 +64,8 @@
   background: var(--accent-soft);
   color: var(--accent);
 }
+
+/* A cor secundária da bandeira complementa o azul principal dos Estados Unidos. */
+[data-country-theme="USA"] .detail-panel {
+  border-top: 3px solid var(--destination-secondary);
+}

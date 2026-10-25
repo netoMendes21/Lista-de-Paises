@@ -456,3 +456,19 @@
 .place-breadcrumb li {
   min-width: 0;
 }
+
+[data-country-theme="USA"] .attraction-card,
+[data-country-theme="USA"] .place-location {
+  border-top: 3px solid var(--destination-secondary);
+}
+
+[data-country-theme="USA"] .section-heading::after,
+[data-country-theme="USA"] .place-related h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin-top: 10px;
+  border-radius: 2px;
+  background: var(--destination-secondary);
+}
