@@ -1,8 +1,17 @@
 import Image from "next/image";
+import { getCountries } from "@/lib/countries";
 import { getCountryPageData } from "@/app/pais/_lib/page-data";
 import AttractionsGallery from "@/components/attractions-gallery";
 import BackLink from "@/components/back-link";
 import CountryCard from "@/components/country-card";
+
+// Entrega as páginas prontas e permite o prefetch completo dos links visíveis.
+export const revalidate = 86400;
+
+export async function generateStaticParams() {
+  const countries = await getCountries();
+  return countries.map((country) => ({ name: country.name }));
+}
 
 export default async function CountryPage({ params }: { params: Promise<{ name: string }> }) {
   const { name } = await params;

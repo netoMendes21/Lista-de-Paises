@@ -37,3 +37,7 @@ Executar `npm run format` para formatar os arquivos versionáveis com Prettier, 
 A validação visual deve cobrir início, país e atração, temas claro e escuro, busca por teclado, filtros, paginação da galeria e retorno ao topo. Testar larguras de 320, 375, 560, 768, 1024, 1440 e 1920 px e orientação horizontal. Esses testes representam faixas de tela; não substituem a execução em todos os navegadores e dispositivos físicos.
 
 Para verificar as rotas completas, mantenha a prévia em execução na porta 3001 e rode `npm run test:routes`. Esse teste cobre os Estados Unidos, a Nova Caledônia e uma atração com nome de país codificado. Use `APP_URL` para apontar para outra prévia.
+
+## Navegação e carregamento
+
+As 250 páginas de países são pré-geradas com `generateStaticParams` e revalidadas a cada 24 horas. Os links padrão do Next.js podem antecipar as páginas estáticas visíveis, reduzindo a espera após o clique. As atrações continuam sendo renderizadas sob demanda. Os estados de carregamento usam um indicador compacto com texto específico para cada tela; não exibem uma grade de cards vazios. Não há atraso artificial na transição.
