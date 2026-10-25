@@ -1,0 +1,268 @@
+@media (min-width: 1500px) {
+  .shell {
+    width: min(1280px, calc(100% - 100px));
+  }
+
+  .flag-frame {
+    height: 125px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .country-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .globe-art {
+    width: 240px;
+    transform: scale(0.85);
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .shell {
+    width: calc(100% - 48px);
+  }
+}
+
+@media (max-width: 780px) {
+  .country-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .globe-art {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 40px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .search-hint {
+    display: none;
+  }
+
+  .search input {
+    padding-right: 42px;
+  }
+
+  .results-heading p {
+    max-width: 150px;
+    text-align: right;
+  }
+
+  .detail-panel {
+    gap: 25px;
+    padding: 25px;
+  }
+
+  .detail-flag {
+    height: 210px;
+  }
+}
+
+@media (max-width: 560px) {
+  .shell {
+    width: calc(100% - 32px);
+  }
+
+  .header-inner {
+    min-height: 80px;
+    gap: 12px;
+  }
+
+  .brand {
+    font-size: 17px;
+    gap: 9px;
+  }
+
+  .brand-mark {
+    width: 35px;
+    height: 35px;
+    font-size: 30px;
+    border-radius: 10px;
+  }
+
+  .brand-caption {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+
+  .theme-switch button {
+    width: 29px;
+    height: 29px;
+  }
+
+  .theme-switch {
+    padding: 4px;
+    gap: 2px;
+  }
+
+  .hero {
+    padding: 34px 0 26px;
+  }
+
+  .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.1px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    letter-spacing: -1.2px;
+  }
+
+  .hero-copy > p {
+    font-size: 13px;
+  }
+
+  .desktop-break {
+    display: none;
+  }
+
+  .hero-meta {
+    font-size: 9px;
+    gap: 7px;
+    margin-top: 18px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 0;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .region-filter {
+    align-self: flex-start;
+  }
+
+  .region-filter select {
+    height: 42px;
+  }
+
+  .results-heading {
+    padding: 24px 0 17px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .results-heading h2 {
+    font-size: 17px;
+    gap: 7px;
+  }
+
+  .results-heading p {
+    font-size: 9px;
+    max-width: 110px;
+  }
+
+  .country-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .country-card article {
+    padding: 9px;
+  }
+
+  .flag-frame {
+    height: 92px;
+  }
+
+  .flag-image {
+    padding: 12px;
+  }
+
+  .card-info {
+    height: 86px;
+  }
+
+  .card-info h3 {
+    font-size: 12px;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 36px;
+  }
+
+  .detail-panel {
+    padding: 20px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .detail-flag {
+    height: 200px;
+  }
+
+  .detail-data {
+    gap: 16px;
+  }
+
+  .detail-data dd {
+    font-size: 16px;
+  }
+  .search input,
+  .attractions-controls input,
+  .region-filter select {
+    font-size: 16px;
+  }
+  .search input {
+    padding-left: 40px;
+  }
+  .place-facts dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .country-card:hover,
+  .country-card:focus-visible,
+  .attraction-card:hover {
+    transform: none;
+  }
+}
+@media (max-width: 359px) {
+  .country-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .flag-frame {
+    height: 140px;
+  }
+  .card-info {
+    height: auto;
+    min-height: 80px;
+  }
+  .brand {
+    font-size: 15px;
+  }
+  .brand-caption {
+    letter-spacing: 1px;
+  }
+  .header-inner {
+    gap: 8px;
+  }
+  .hero h1 {
+    font-size: 29px;
+  }
+}

@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
-import Link from "next/link";
 import Image from "next/image";
-import ThemeToggle from "@/components/theme-toggle";
+import Link from "next/link";
+import type { Metadata } from "next";
+import BackToTop from "@/components/back-to-top";
 import GlobeIcon from "@/components/globe-icon";
+import ThemeToggle from "@/components/theme-toggle";
 import "./globals.css";
 
 const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
@@ -24,7 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a className="skip-link" href="#conteudo">
           Pular para o conteúdo
         </a>
-        <header className="site-header">
+        <header id="topo" className="site-header">
           <div className="shell header-inner">
             <Link href="/" className="brand" aria-label="Lista de países — início">
               <span className="brand-mark" aria-hidden="true">
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             Feito para quem tem curiosidade <GlobeIcon className="footer-globe" />
           </span>
         </footer>
+        <BackToTop />
       </body>
     </html>
   );

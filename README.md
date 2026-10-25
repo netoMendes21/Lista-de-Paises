@@ -40,3 +40,7 @@ Baseado no mini-projeto [Lista de Países — Codante](https://codante.io/mini-p
 [💻 Link para o GitHub](https://github.com/netoMendes21/Lista-de-Paises)
 
 [🌍 Site Lista de Países](https://mp-lista-de-paises-next-nine.vercel.app/)
+
+## Desenvolvimento e organização
+
+Consulte [Arquitetura e manutenção](docs/architecture.md) para a divisão de responsabilidades, padrões de código e comandos de validação. Use `npm run format` para aplicar a indentação e `npm run format:check` para conferi-la.

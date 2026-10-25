@@ -1,30 +1,18 @@
-import Icon from "@/components/icon";
-import CountryCard from "@/components/country-card";
-import { getCountries } from "@/lib/countries";
 import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { getCountryPageData } from "@/app/pais/_lib/page-data";
+import AttractionsGallery from "@/components/attractions-gallery";
+import BackLink from "@/components/back-link";
+import CountryCard from "@/components/country-card";
 
 export default async function CountryPage({ params }: { params: Promise<{ name: string }> }) {
   const { name } = await params;
-  let decodedName: string;
-  try {
-    decodedName = decodeURIComponent(name);
-  } catch {
-    notFound();
-  }
-  const countries = await getCountries();
-  const country = countries.find((item) => item.name === decodedName);
-  if (!country) notFound();
+  const { country, countries, attractions } = await getCountryPageData(name);
   const borderCodes = new Set(country.borders);
   const borderCountries = countries.filter((item) => borderCodes.has(item.code));
 
   return (
-    <section>
-      <Link href="/" className="back-link">
-        <Icon name="arrow-left" />
-        <span>Voltar para todos os países</span>
-      </Link>
+    <section data-country-theme={country.code}>
+      <BackLink href="/" />
       <div className="detail-heading">
         <p className="eyebrow">CADA LUGAR, UMA NOVA DESCOBERTA</p>
         <h1>{country.ptName}</h1>
@@ -73,6 +61,23 @@ export default async function CountryPage({ params }: { params: Promise<{ name: 
           </div>
         </dl>
       </article>
+      <section className="attractions-section" aria-labelledby="attractions-heading">
+        <h2 id="attractions-heading" className="section-heading">
+          Principais pontos turísticos
+        </h2>
+        {attractions.length ? (
+          <AttractionsGallery
+            key={country.code}
+            countryName={country.name}
+            attractions={attractions}
+          />
+        ) : (
+          <p className="attractions-empty">
+            Ainda não há informações verificadas sobre pontos turísticos cadastradas para este
+            destino.
+          </p>
+        )}
+      </section>
       <h2 className="borders-heading">
         Países que fazem fronteira <span className="count-badge">{borderCountries.length}</span>
       </h2>

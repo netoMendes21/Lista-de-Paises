@@ -1,11 +1,13 @@
 "use client";
 
-import Icon from "@/components/icon";
-
 import { useId, useState, type KeyboardEvent, type RefObject } from "react";
-import Image from "next/image";
+
 import { useRouter } from "next/navigation";
+
+import Image from "next/image";
+import { countryPath } from "@/lib/routes";
 import GlobeIcon from "@/components/globe-icon";
+import Icon from "@/components/icon";
 import type { Country } from "@/lib/countries";
 
 type CountrySearchProps = {
@@ -30,7 +32,7 @@ export default function CountrySearch({
 
   function visit(country: Country) {
     setOpen(false);
-    router.push("/pais/" + encodeURIComponent(country.name));
+    router.push(countryPath(country.name));
   }
 
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {

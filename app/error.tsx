@@ -9,7 +9,9 @@ export default function Error({ reset }: { reset: () => void }) {
       <button onClick={reset} className="primary-button">
         Tentar novamente
       </button>
-      <Link href="/">Voltar para a lista</Link>
+      <Link href="/" className="navigation-button">
+        Voltar para a lista
+      </Link>
     </section>
   );
 }

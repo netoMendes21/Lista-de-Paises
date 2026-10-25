@@ -1,7 +1,7 @@
 "use client";
 
-import Icon from "@/components/icon";
 import { useSyncExternalStore } from "react";
+import Icon from "@/components/icon";
 
 function subscribe(callback: () => void) {
   const media = window.matchMedia("(prefers-color-scheme: dark)");

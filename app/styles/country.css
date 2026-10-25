@@ -1,0 +1,66 @@
+.detail-heading {
+  margin: 0 0 28px;
+}
+
+.detail-heading h1 {
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 850;
+  letter-spacing: -1px;
+  overflow-wrap: anywhere;
+}
+
+.detail-heading p {
+  color: var(--muted);
+}
+
+.detail-panel {
+  display: grid;
+  align-items: center;
+  gap: 50px;
+  background: linear-gradient(145deg, var(--surface-alt), var(--surface) 75%);
+  padding: 36px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.detail-flag {
+  position: relative;
+  height: 260px;
+  border-radius: 10px;
+  background: var(--soft);
+}
+
+.detail-flag img {
+  padding: 25px;
+  object-fit: contain;
+}
+
+.detail-data {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+
+.detail-data dt {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.detail-data dd {
+  margin: 4px 0 0;
+  font-size: 18px;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.language-chip {
+  display: inline-block;
+  padding: 4px 11px;
+  margin: 4px 5px 0 0;
+  font-size: 12px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}

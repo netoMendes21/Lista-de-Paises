@@ -1,0 +1,12 @@
+{
+  "consultedAt": "2026-10-25",
+  "countries": 129,
+  "entries": 1395,
+  "entriesWithImage": 1275,
+  "sources": [
+    "https://www.wikidata.org",
+    "https://commons.wikimedia.org",
+    "https://whc.unesco.org"
+  ],
+  "completeWorldwideCoverage": false
+}

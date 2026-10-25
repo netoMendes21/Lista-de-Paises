@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { countryPath } from "@/lib/routes";
 import GlobeIcon from "@/components/globe-icon";
 import RegionBadge from "@/components/region-badge";
 import type { Country } from "@/lib/countries";
@@ -8,11 +9,7 @@ type CountryCardProps = Pick<Country, "name" | "ptName" | "flag" | "flagAlt"> & 
 
 export default function CountryCard({ name, ptName, flag, flagAlt, region }: CountryCardProps) {
   return (
-    <Link
-      href={"/pais/" + encodeURIComponent(name)}
-      className="country-card"
-      aria-label={`Conhecer ${ptName}`}
-    >
+    <Link href={countryPath(name)} className="country-card" aria-label={`Conhecer ${ptName}`}>
       <article>
         <div className="flag-frame">
           <Image
@@ -24,7 +21,7 @@ export default function CountryCard({ name, ptName, flag, flagAlt, region }: Cou
           />
         </div>
         <div className="card-info">
-          <h2>{ptName}</h2>
+          <h3>{ptName}</h3>
           <div className="card-footer">
             {region ? <RegionBadge region={region} /> : <span />}
             <span className="card-access" title="Ver detalhes" aria-hidden="true">

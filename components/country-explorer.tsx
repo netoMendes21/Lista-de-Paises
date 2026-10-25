@@ -1,20 +1,13 @@
 "use client";
 
-import Icon from "@/components/icon";
-
 import { useMemo, useRef, useState } from "react";
+import { normalizeSearchText } from "@/lib/text";
+
 import CountryCard from "@/components/country-card";
 import CountrySearch from "@/components/country-search";
 import ExplorerHero from "@/components/explorer-hero";
+import Icon from "@/components/icon";
 import type { Country } from "@/lib/countries";
-
-function normalize(value: string) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLocaleLowerCase("pt-BR")
-    .trim();
-}
 
 /** Coordena os filtros; busca, apresentação e cards possuem componentes próprios. */
 export default function CountryExplorer({ countries }: { countries: Country[] }) {
@@ -25,17 +18,21 @@ export default function CountryExplorer({ countries }: { countries: Country[] })
     () =>
       countries.map((country) => ({
         country,
-        search: normalize(country.ptName),
+        search: normalizeSearchText(country.ptName),
       })),
     [countries],
   );
-  const normalizedQuery = normalize(query);
+  const normalizedQuery = normalizeSearchText(query);
   const matches = searchIndex
     .filter((item) => item.search.includes(normalizedQuery))
     .map((item) => item.country);
   const results = region ? matches.filter((country) => country.region === region) : matches;
-  const regions = [...new Set(countries.map((country) => country.region).filter(Boolean))].sort(
-    (a, b) => a.localeCompare(b, "pt-BR"),
+  const regions = useMemo(
+    () =>
+      [...new Set(countries.map((country) => country.region).filter(Boolean))].sort((a, b) =>
+        a.localeCompare(b, "pt-BR"),
+      ),
+    [countries],
   );
 
   function clearFilters() {
