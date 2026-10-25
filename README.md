@@ -1,6 +1,6 @@
 # 🌍 Lista de Países
 
-Explore países e territórios com informações em português, pesquisa com sugestões e temas claro e escuro.
+Explore países e territórios, descubra pontos turísticos e conheça novos lugares com informações em português e temas inspirados nas bandeiras.
 
 ## 📸 Visão do projeto
 
@@ -11,8 +11,9 @@ Explore países e territórios com informações em português, pesquisa com sug
 - **Pesquisa inteligente:** sugestões com bandeiras e busca sem diferenciar acentos ou maiúsculas.
 - **Exploração:** lista alfabética, filtro por região e contador de resultados.
 - **Detalhes:** capital, população, idiomas, região e países vizinhos.
-- **Temas:** preferência inicial do sistema e escolha salva no navegador.
-- **Interface:** layout responsivo, cards compactos e animações suaves.
+- **Pontos turísticos:** fotos, descrições em português e páginas próprias com história e mapa.
+- **Temas:** paletas inspiradas nas bandeiras, modos claro e escuro e preferência salva no navegador.
+- **Interface:** layout responsivo, cards compactos, navegação otimizada e botão flutuante para voltar ao topo.
 - **Acessibilidade:** navegação por teclado, foco visível e respeito ao movimento reduzido.
 
 ## 🧰 Tecnologias
@@ -30,6 +31,10 @@ O projeto utiliza Fetch API, cache com revalidação, `Intl` para localização 
 
 - [**countries.dev**](https://countries.dev/docs): dados dos países.
 - [**FlagCDN**](https://flagcdn.com/): bandeiras em SVG.
+- [**Wikidata**](https://www.wikidata.org/): dados estruturados das atrações, disponibilizados sob CC0.
+- [**UNESCO**](https://whc.unesco.org/en/list/): referências sobre locais do Patrimônio Mundial.
+- [**Wikimedia Commons**](https://commons.wikimedia.org/): fotografias, com autoria e licença indicadas junto às imagens.
+- [**OpenStreetMap**](https://www.openstreetmap.org/copyright): mapas e informações de localização.
 - [**Nunito Sans**](https://fonts.google.com/specimen/Nunito+Sans): tipografia integrada por `next/font`.
 - [**NASA — Blue Marble**](https://science.nasa.gov/earth/earth-observatory/the-blue-marble-true-color-global-imagery-at-1km-resolution/): imagem da Terra, de Reto Stöckli, com composição e cores de Robert Simmon / NASA Goddard Space Flight Center.
 
@@ -40,7 +45,3 @@ Baseado no mini-projeto [Lista de Países — Codante](https://codante.io/mini-p
 [💻 Link para o GitHub](https://github.com/netoMendes21/Lista-de-Paises)
 
 [🌍 Site Lista de Países](https://mp-lista-de-paises-next-nine.vercel.app/)
-
-## Desenvolvimento e organização
-
-Consulte [Arquitetura e manutenção](docs/architecture.md) para a divisão de responsabilidades, padrões de código e comandos de validação. Use `npm run format` para aplicar a indentação e `npm run format:check` para conferi-la.
