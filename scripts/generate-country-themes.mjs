@@ -67,7 +67,7 @@ function readable(color, backgrounds, mode) {
   }
   throw new Error("Não foi possível gerar contraste suficiente");
 }
-function createPalette(primary, secondary, mode) {
+function createPalette(primary, secondary, mode, accentColor) {
   const dark = mode === "dark";
   const tint = (base, amount) => {
     let color = mix(primary, base, amount);
@@ -83,7 +83,7 @@ function createPalette(primary, secondary, mode) {
   const soft = tint(dark ? "#2d2d33" : "#ffffff", dark ? 0.6 : 0.89);
   const accentSoft = tint(dark ? "#24232a" : "#ffffff", dark ? 0.62 : 0.9);
   const backgrounds = [bg, surface, surfaceAlt, soft, accentSoft];
-  const accentSeed = dark && saturation(secondary) > 0.25 ? secondary : primary;
+  const accentSeed = accentColor ?? (dark && saturation(secondary) > 0.25 ? secondary : primary);
   return {
     bg,
     surface,
@@ -234,7 +234,11 @@ async function worker() {
   while (next < countries.length) {
     const index = next++;
     const country = countries[index];
-    const colors = await extractColors(await getFlag(country.alpha2Code));
+    // Azul do SVG da bandeira dos EUA, priorizado na identidade deste destino.
+    const colors =
+      country.alpha3Code === "USA"
+        ? { primary: "#0a3161", secondary: "#b31942" }
+        : await extractColors(await getFlag(country.alpha2Code));
     themes[country.alpha3Code] = {
       name: country.translations?.pt ?? country.name,
       flagUrl: `https://flagcdn.com/${country.alpha2Code.toLowerCase()}.svg`,
@@ -242,11 +246,21 @@ async function worker() {
       light:
         country.alpha3Code === "ESP"
           ? spain.light
-          : createPalette(colors.primary, colors.secondary, "light"),
+          : createPalette(
+              colors.primary,
+              colors.secondary,
+              "light",
+              country.alpha3Code === "USA" ? colors.primary : undefined,
+            ),
       dark:
         country.alpha3Code === "ESP"
           ? spain.dark
-          : createPalette(colors.primary, colors.secondary, "dark"),
+          : createPalette(
+              colors.primary,
+              colors.secondary,
+              "dark",
+              country.alpha3Code === "USA" ? "#75a7e8" : undefined,
+            ),
     };
     if ((index + 1) % 25 === 0) console.log(`Paletas: ${index + 1}/${countries.length}`);
   }

@@ -68,3 +68,7 @@ assert.equal(
 console.log(
   `Validadas ${Object.keys(themes).length} paletas nos dois temas: contraste mínimo 4,5:1 nos textos e botões.`,
 );
+
+assert.equal(themes.USA.primary, "#0a3161", "Preservar o azul da bandeira dos Estados Unidos");
+assert.equal(themes.USA.light.accent, "#0a3161");
+assert.equal(themes.USA.dark.accent, "#75a7e8", "Azul adaptado ao contraste do tema escuro");
