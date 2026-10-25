@@ -79,7 +79,8 @@ export default async function CountryPage({ params }: { params: Promise<{ name: 
         )}
       </section>
       <h2 className="borders-heading">
-        Países que fazem fronteira <span className="count-badge">{borderCountries.length}</span>
+        {borderCountries.length === 1 ? "País que faz fronteira" : "Países que fazem fronteira"}{" "}
+        <span className="count-badge">{borderCountries.length}</span>
       </h2>
       {borderCountries.length ? (
         <div className="country-grid results-enter">

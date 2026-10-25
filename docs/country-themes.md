@@ -9,3 +9,5 @@ A paleta aprovada da Espanha é preservada como exceção editorial. Para os dem
 Para atualizar: node scripts/generate-country-themes.mjs. Para validar as paletas: node scripts/verify-country-themes.mjs. O gerador usa acesso à rede somente durante a atualização.
 
 Nos Estados Unidos, o azul da bandeira conduz a paleta e o vermelho aparece nas bordas superiores dos cards, no painel do país e nos traços dos títulos de seção. As duas cores são preservadas nos temas claro e escuro.
+
+Todos os destinos usam a cor secundária da própria bandeira nas bordas superiores dos cards, no painel do país, no mapa e nos traços dos títulos de seção. Assim, a identidade combina as cores principais e secundárias de cada bandeira.

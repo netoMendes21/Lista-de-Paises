@@ -24,3 +24,16 @@ test("atração de país com espaços no nome também abre", async () => {
   assert.equal(response.status, 200);
   assert.ok((await response.text()).includes("Estátua da Liberdade"));
 });
+
+for (const [name, expected] of [
+  ["Portugal", "País que faz fronteira"],
+  ["Brazil", "Países que fazem fronteira"],
+]) {
+  test(`fronteiras de ${name} usam a concordância correta`, async () => {
+    const response = await fetch(new URL(countryPath(name), baseUrl));
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    const heading = html.match(/<h2 class="borders-heading">([\s\S]*?)<\/h2>/)?.[1];
+    assert.ok(heading?.includes(expected), `O título deve conter: ${expected}`);
+  });
+}

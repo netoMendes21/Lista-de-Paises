@@ -457,13 +457,13 @@
   min-width: 0;
 }
 
-[data-country-theme="USA"] .attraction-card,
-[data-country-theme="USA"] .place-location {
+[data-country-theme] .attraction-card,
+[data-country-theme] .place-location {
   border-top: 3px solid var(--destination-secondary);
 }
 
-[data-country-theme="USA"] .section-heading::after,
-[data-country-theme="USA"] .place-related h2::after {
+[data-country-theme] .section-heading::after,
+[data-country-theme] .place-related h2::after {
   content: "";
   display: block;
   width: 56px;
